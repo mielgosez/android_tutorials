@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.cocobranch.databinding'
+    namespace 'com.cocobranch.viewmodeldemo'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.cocobranch.databinding"
+        applicationId "com.cocobranch.viewmodeldemo"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -37,12 +37,15 @@ android {
 }
 
 dependencies {
-
+    def lifecycle_version = "2.6.1"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.databinding:databinding-runtime:7.1.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

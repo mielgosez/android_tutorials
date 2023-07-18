@@ -15,19 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.apply {
-            button.setOnClickListener {
-                if (!TextUtils.isEmpty(etName.text.toString())){
-                    tvText.text = "Hello ${etName.text.toString()}"
-                }else{
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Please enter a Name",
-                        Toast.LENGTH_LONG).show()
-                }
-
-            }
-        }
+        binding.student = getStudent()
     }
 
     private fun getStudent(): Student{
