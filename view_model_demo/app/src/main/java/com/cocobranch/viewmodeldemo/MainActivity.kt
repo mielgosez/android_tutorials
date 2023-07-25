@@ -14,9 +14,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
-        binding.countText.text = viewModel.getCurrentCount().toString()
-        binding.btn.setOnClickListener {
-            binding.countText.text = viewModel.getUpdatedCount().toString()
-        }
+        binding.lifecycleOwner = this
+        binding.myViewmodel = viewModel
     }
 }
