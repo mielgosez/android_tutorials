@@ -1,15 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-
+    id "org.jetbrains.kotlin.kapt"
 }
 
 android {
-    namespace 'com.cocobranch.databinding'
+    namespace 'com.cocobranch.roomdemo'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.cocobranch.databinding"
+        applicationId "com.cocobranch.roomdemo"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -25,11 +25,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility =17
+        targetCompatibility =17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget=17
     }
     buildFeatures{
         viewBinding = true
@@ -38,12 +38,24 @@ android {
 }
 
 dependencies {
-
+    def lifecycle_version = "2.6.1"
+    def arch_version = "2.2.0"
+    def room_version = "2.5.2"
+    // Annotation processor
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // ViewModel utilities for Compose
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.databinding:databinding-runtime:7.1.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
